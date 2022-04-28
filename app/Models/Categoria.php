@@ -9,21 +9,28 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'descCategoria',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'id' => 'integer',
     ];
+
+
+    public function rules(){
+        return [
+            "descCategoria" => 'required|string|unique:categorias',
+        ];
+    }
+
+    public function feedback(){
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'descCategoria.unique' => 'Está categoria já existe',
+        ];
+        
+    }
 }

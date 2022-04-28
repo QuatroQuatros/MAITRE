@@ -1,18 +1,41 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\ClienteController;
+use App\Http\Controllers\Web\RestauranteController;
+use App\Http\Controllers\Web\CategoriaController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', [ClienteController::class, 'index']);
+  
+
+
+
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/', [AdminController::class, 'index'])->middleware('auth', 'admin');
+    Route::get('/categorias/create', [CategoriaController::class, 'create'])->middleware('auth', 'admin');
+    Route::post('/categorias/create', [CategoriaController::class, 'store'])->middleware('auth', 'admin');
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->middleware('auth', 'admin');
+
+});
+
+
+
+Route::prefix('/restaurantes')->group(function(){
+    Route::get('/admin', [RestauranteController::class, 'dash'])->middleware('auth', 'restaurante');
+    Route::get('/create', [RestauranteController::class, 'create'])->middleware('auth', 'restaurante');
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
