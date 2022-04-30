@@ -9,11 +9,7 @@ class Avaliacao extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = "avaliacoes";
     protected $fillable = [
         'estrelas',
         'descAvaliacao',
@@ -33,5 +29,20 @@ class Avaliacao extends Model
     public function restaurante()
     {
         return $this->belongsTo(Restaurante::class);
+    }
+
+    public function rules(){
+        return [
+            "estrelas" => "required|integer",
+            "descAvaliacao" => 'required|string',
+            "restaurante_id" => "required|integer"
+        ];
+    }
+
+    public function feedback(){
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+        ];
+        
     }
 }

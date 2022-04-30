@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvaliacaosTable extends Migration
+class CreateAvaliacoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateAvaliacaosTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('avaliacaos', function (Blueprint $table) {
+        Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
             $table->integer('estrelas');
             $table->string('descAvaliacao');
@@ -33,6 +33,6 @@ class CreateAvaliacaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avaliacaos');
+        Schema::dropIfExists('avaliacoes');
     }
 }

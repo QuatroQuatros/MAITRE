@@ -23,7 +23,7 @@ class CategoriaFactory extends Factory
     public function definition()
     {
         return [
-            'descCategoria' => $this->faker->word,
+            'descCategoria' => $this->faker->unique()->word,
         ];
     }
 }

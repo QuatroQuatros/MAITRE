@@ -9,11 +9,6 @@ class Restaurante extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'nome',
         'bairro',
@@ -27,11 +22,6 @@ class Restaurante extends Model
         'user_id',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'categoria_id' => 'integer',
@@ -46,5 +36,27 @@ class Restaurante extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function rules(){
+        return [
+            "nome" => 'required|string|unique:restaurantes',
+            "endereco" => 'required|string',
+            "numero" => 'required|integer',
+            "bairro" => 'required|string',
+            "cidade" => 'required|string',
+            "estado" => 'required|string',
+            "foto" => 'nullable|file|mimes:png,jpg,jpeg',
+            "cep" => 'required|string',
+            "categoria_id" => 'required|integer',
+            "user_id" => 'required|integer',
+        ];
+    }
+
+    public function feedback(){
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'nome.unique' => 'Já existe um restaurante cadastrado com este nome.',
+        ];
     }
 }
