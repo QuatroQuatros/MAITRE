@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    'driver' => env('SESSION_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,6 +154,8 @@ return [
     | available to in your application. A sensible default has been set.
     |
     */
+
+    //'domain' => '.domain.com',
 
     'domain' => env('SESSION_DOMAIN'),
 
