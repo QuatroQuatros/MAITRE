@@ -1,60 +1,155 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('title', 'Login')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@section('content')
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+<img src="/img/cadastro.png" style="width: 100%;" alt="">
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+    <section id="contact" class="contact">
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+        <div class="container mt-5">
+            <form action="/register" method="post" role="form" class="php-email-form">
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+                <div class="section-title">
+                    <h2>Dados de <span>Acesso</span></h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 form-group ">
+                        <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}"
+                            placeholder="Seu e-mail" data-rule="email"
+                            data-msg="Por favor, coloque um e-mail válido" require="@Email @Required">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 form-group ">
+                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha"
+                            require="@Password @Required">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 form-group mt-3 mt-md-0">
+                        <input type="password" class="form-control" name="senha" id="senha"
+                            placeholder="Confirmar senha" require="@Password @Required">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                        <h5>Opções de cadastro</h5>
+                        <select placeholder="opção de cadastro" class="form-control" id="select" name="select">
+                            <option select value="divUsuario">Cadastro de cliente</option>
+                            <option select value="divRestaurante">Cadastro de dono restaurante</option>
+                        </select>
+                        <div class="validate"></div>
+                    </div>
+                </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+                <div id="pai">
+                    <div class="row" id="divUsuario">
+                        <div class="section-title">
+                            <h2>Dados de <span>Pessoais</span></h2>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name"
+                                placeholder="Nome completo" data-rule="minlen:3"
+                                data-msg="Por favor, coloque um nome válido" require="@Required">
+                            <div class="validate"></div>
+                        </div>
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                placeholder="Seu telefone" data-rule="minlen:4" data-msg="Númereo inválido"
+                                require="@Numeric">
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Seu CPF "
+                                require="@CPF">
+                            <div class="validate"></div>
+                        </div>
+                    </div>
+                    <div class="res" id="divRestaurante">
+                        <div class="section-title">
+                            <h2>Dados <span>pessoais</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <input type="text" name="name" class="form-control" id="name"
+                                    placeholder="Nome completo" data-rule="minlen:3"
+                                    data-msg="Por favor, coloque um nome válido" require="@Required">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                                <input type="text" class="form-control" name="phone" id="phone"
+                                    placeholder="Seu telefone" data-rule="minlen:4" data-msg="Númereo inválido"
+                                    require="@Numeric">
+                                <div class="validate"></div>
+                            </div>
+                            <?php ?>
+                            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                                <input type="text" class="form-control" name="cpf" id="cpf"
+                                    placeholder="Seu CPF">
+                                <div class="validate"></div>
                             </div>
                         </div>
-                    </x-jet-label>
+                        <div class="section-title">
+                            <h2>Dados do <span>Restaurante</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" name="nomeRestaurante" class="form-control"
+                                    id="nomeRestaurante" placeholder="Nome do Seu Restaurante"
+                                    data-rule="minlen:4">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" name="cep" class="form-control" id="cep"
+                                    placeholder="CEP do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" class="form-control" name="bairro" id="bairro"
+                                    placeholder="Bairro do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" class="form-control" name="cidade" id="cidade"
+                                    placeholder="Cidade do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" class="form-control" name="rua" id="rua"
+                                    placeholder="Endereço do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <input type="text" class="form-control" id="numeroRestaurante"
+                                    name="numeroRestaurante" placeholder="Número do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <h7>telefone de contato do restaurante</h7>
+                                <input type="text" class="form-control" name="telRestaurante"
+                                    id="telRestaurante" placeholder="telefone do Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <h7>Foto do Cardapio</h7>
+                                <input type="file" class="form-control" name="cardapio" id="cardapio"
+                                    placeholder="Insira seu cardápio">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group mt-3">
+                                <h7>Foto do Restaurante</h7>
+                                <input type="file" class="form-control" name="fotoRestaurante"
+                                    id="fotoRestaurante" placeholder="Coloque a foto do seu Restaurante">
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+                <div class="text-center" style="margin-top: 1em;"><button type="submit">Cadastrar-se</button>
+                </div>
+                <p>
+                    Já possui uma conta?<a href="login.php"> Faça login</a></p>
+            </form>
+        </div>
+    </section><!-- End Contact Section -->
+@endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Restaurante;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestauranteRepository{
@@ -17,12 +18,8 @@ class RestauranteRepository{
     public function index(){
         return $this->restaurante->join('avaliacoes', 'restaurantes.id', 'avaliacoes.restaurante_id')
         ->select('restaurantes.id', 'restaurantes.nome', 'restaurantes.foto', DB::raw( 'AVG( avaliacoes.estrelas ) as estrelas' ))
-        ->groupBy('restaurantes.id', 'restaurantes.nome', 'restaurantes.foto')->get();
+        ->groupBy('restaurantes.id', 'restaurantes.nome','restaurantes.foto')->get();
 
-    }
-
-    public function show($id){
-        return $this->restaurante->findOrFail($id);
     }
 
     public function store(Request $request){
@@ -30,7 +27,12 @@ class RestauranteRepository{
 
         $imagem = $request->file('foto');
         $name = $imagem->getClientOriginalName(); 
-        $imagem_urn = $imagem->storeAs('imagens', $name, 'public');
+
+        $path = Storage::disk('s3')->put('imagens', $imagem, 'public');
+
+        //$path = $imagem->storeAs('imagens', $name, 's3');
+
+        Storage::disk('s3')->setVisibility($path, 'public');
 
         return $this->restaurante->create([
             "nome" => $request->nome,
@@ -40,7 +42,7 @@ class RestauranteRepository{
             "bairro" => $request->bairro,
             "cidade" => $request->cidade,
             "estado" =>  $request->estado,
-            "foto" => $imagem_urn,
+            "foto" => Storage::disk('s3')->url($path),
             "cep" =>  $request->cep,
             "categoria_id" => $request->categoria_id,
             "user_id" => $request->user_id

@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+
+Artisan::command('addAdmin', function(){
+    $user = new App\Models\User;
+    $user->name = 'Admin';
+    $user->email = 'admin@admin.com';
+    $user->password = Hash::make('admin123');
+    $user->level = 3;
+    $user->save();
+})->purpose('Add admin user');

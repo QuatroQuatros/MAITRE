@@ -1,262 +1,244 @@
-@extends('layouts.index');
+@extends('layouts.index')
 
-@section('title', 'MAITRÊ')
+@section('title', 'MAÎTRE || SERVINDO A VOCÊ')
 
 @section('content')
-<section class="section swiper-container swiper-slider swiper-slider-2 swiper-slider-3" data-loop="true" data-autoplay="5000" data-simulate-touch="false" data-slide-effect="fade">
-      <div class="swiper-wrapper text-sm-left">
-        <div class="swiper-slide context-dark" data-slide-bg="/images/TESTETCC.png">
-          <div class="swiper-slide-caption section-md">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-8 col-lg-7 offset-lg-1 offset-xxl-0">
-                  <h1 class="oh swiper-title"><span class="d-inline-block" data-caption-animate="slideInDown" data-caption-delay="0">Na palma da sua MÃO!</span></h1>
-                  <p class="big swiper-text" data-caption-animate="fadeInRight" data-caption-delay="300">Busque conforme a sua vontade!</p>
-                  <div class="button-wrap oh"><a class="button button-lg button-primary button-winona button-shadow-2" href="#" data-caption-animate="slideInUp" data-caption-delay="0">Veja os restaurantes</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide context-dark" data-slide-bg="images/slide-1-1920x753.jpg">
-          <div class="swiper-slide-caption section-md">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-9 col-md-8 col-lg-7 col-xl-7 offset-lg-1 offset-xxl-0">
-                  <h1 class="oh swiper-title"><span class="d-inline-block" data-caption-animate="slideInUp" data-caption-delay="0">Os melhores restaurantes!</span></h1>
-                  <p class="big swiper-text" data-caption-animate="fadeInLeft" data-caption-delay="300">Aqui você obtem as melhores experiencias!</p><a class="button button-lg button-primary button-winona button-shadow-2" href="#" data-caption-animate="fadeInUp" data-caption-delay="300">Veja os restaurantes</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Swiper Pagination-->
-      <div class="swiper-pagination" data-bullet-custom="true"></div>
-      <!-- Swiper Navigation-->
-      <div class="swiper-button-prev">
-        <div class="preview">
-          <div class="preview__img"></div>
-        </div>
-        <div class="swiper-button-arrow"></div>
-      </div>
-      <div class="swiper-button-next">
-        <div class="swiper-button-arrow"></div>
-        <div class="preview">
-          <div class="preview__img"></div>
-        </div>
-      </div>
-    </section>
+<section id="hero">
+  <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-    <section class="section section-sm bg-default">
+          <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+          <div class="carousel-inner" role="listbox">
+
+              <!-- Slide 1 -->
+              <div class="carousel-item active" style="background-image: url(/img/slide/slide-1.jpg);">
+                  <div class="carousel-container">
+                      <div class="carousel-content">
+                          <h2 class="animate__animated animate__fadeInDown"><span>MAÎ</span>TRE</h2>
+                          <p class="animate__animated animate__fadeInUp">Encontre os melhores restaurantes perto de você</p>
+                          <div>
+                              <a href="#restaurantes"
+                                  class="btn-menu animate__animated animate__fadeInUp scrollto">Restaurantes</a>
+                              <a href="#restaurantePremium"
+                                  class="btn-book animate__animated animate__fadeInUp scrollto">Premium</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-item" style="background-image: url(/img/slide/slide-2.jpg);">
+                  <div class="carousel-container">
+                      <div class="carousel-content">
+                          <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
+                          <p class="animate__animated animate__fadeInUp">Ele quer ser tão inteligente quanto algo que
+                              alguma coisa. Segui-los, e segui-los, é não buscar nada para conseguir algo. cego pela dor
+                              como resiliência. Era algo como prazer. Acusamos a dor e evitamos, acalma
+                              ou. Menos tempo e tipo de arquiteto.</p>
+                          <div>
+                              <a href="#restaurantes"
+                                  class="btn-menu animate__animated animate__fadeInUp scrollto">Restaurantes</a>
+                              <a href="#restaurantePremium"
+                                  class="btn-book animate__animated animate__fadeInUp scrollto">Premium</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-item" style="background-image: url(/img/slide/slide-3.jpg);">
+                  <div class="carousel-container">
+                      <div class="carousel-content">
+                          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+                          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
+                              aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
+                              mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
+                              vel. Minus et tempore modi architecto.</p>
+                          <div>
+                              <a href="#restaurantes"
+                                  class="btn-menu animate__animated animate__fadeInUp scrollto">Restaurantes</a>
+                              <a href="#restaurantePremium"
+                                  class="btn-book animate__animated animate__fadeInUp scrollto">Premium</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
+
+          <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
+      </div>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+  <!--======= restaurantes Section ======= -->
+  <section id="restaurantes" class="chefs">
       <div class="container">
-        <div class="owl-carousel owl-style-11 dots-style-2" data-items="1" data-sm-items="1" data-lg-items="2" data-xl-items="4" data-margin="30" data-dots="true" data-mouse-drag="true" data-rtl="true">
-          <article class="box-icon-megan wow fadeInUp">
-            <div class="box-icon-megan-header">
-              <div class="box-icon-megan-icon linearicons-pizza"></div>
+
+          <div class="section-title">
+              <h2>Alguns <span>restaurantes</span></h2>
+          </div>
+
+          <div class="row">
+          @foreach ($restaurantes as $r)
+          <div class="col-lg-4 col-md-6">
+            <div class="member">
+                <div class="pic"><img class="restaurante-img" src="storage/{{$r->foto}}" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                    <h4>{{$r->nome}}</h4>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="center-button">
+                        <a href="./restaurante/restaurante.php"><button type="submit"
+                                class="button-coment">Visitar restaurante</button></a>
+                    </div>
+                </div>
             </div>
-            <h5 class="box-icon-megan-title"><a href="#">Pizzas!</a></h5>
-            <p class="box-icon-megan-text">Aqui você encontra restaurantes avaliados por nossos usúarios!</p>
-          </article>
-          <article class="box-icon-megan wow fadeInUp" data-wow-delay=".05s">
-            <div class="box-icon-megan-header">
-              <div class="box-icon-megan-icon linearicons-hamburger"></div>
-            </div>
-            <h5 class="box-icon-megan-title"><a href="#">Hamburguers!</a></h5>
-            <p class="box-icon-megan-text">Pesquise conforme a sua localização!</p>
-          </article>
-          <article class="box-icon-megan wow fadeInUp" data-wow-delay=".1s">
-            <div class="box-icon-megan-header">
-              <div class="box-icon-megan-icon linearicons-fish"></div>
-            </div>
-            <h5 class="box-icon-megan-title"><a href="#">Peixes!</a></h5>
-            <p class="box-icon-megan-text">Com a nossa tecnologia você não fica mais na fila de espera!</p>
-          </article>
-          <article class="box-icon-megan wow fadeInUp" data-wow-delay=".15s">
-            <div class="box-icon-megan-header">
-              <div class="box-icon-megan-icon linearicons-heart"></div>
-            </div>
-            <h5 class="box-icon-megan-title"><a href="#">Comidas saudáveis!</a></h5>
-            <p class="box-icon-megan-text">Entregamos sempre o melhor a você!</p>
-          </article>
-        </div>
+          </div>
+          @endforeach
       </div>
-    </section>
-    
-<br><br>
-    <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Nossos Restaurantes</span></h3>
-<br><br>
+  </section><!-- End restaurante Section -->
 
 
-<section class="section section-md bg-default">
+  <!-- ======= full restaurantes Section ======= -->
+  <section id="restaurantePremium" class="events">
       <div class="container">
-       
-        <div class="row row-md row-30">
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInUp">
-                <div class="services-terri-figure"><img src="images/retaurante.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-leaf"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInDown">
-                <div class="services-terri-figure"><img src="images/menu-2-370x278.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-pizza"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInUp">
-                <div class="services-terri-figure"><img src="images/menu-3-370x278.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-hamburger"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInDown">
-                <div class="services-terri-figure"><img src="images/menu-4-370x278.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-ice-cream"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInUp">
-                <div class="services-terri-figure"><img src="images/menu-5-370x278.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-coffee-cup"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="oh-desktop">
-              <!-- Services Terri-->
-              <article class="services-terri wow slideInDown">
-                <div class="services-terri-figure"><img src="images/menu-6-370x278.jpg" alt="" width="370" height="278" />
-                </div>
-                <div class="services-terri-caption"><span class="services-terri-icon linearicons-steak"></span>
-                  <h5 class="services-terri-title"><a href="restaurante.php">NOME DO RESTAURANTE</a></h5>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-<!-- Section Services  Last section-->
 
-<br><br>
-    <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Nossos pratos mais conhecidos</span></h3>
-<br><br>
-    <section class="section section-last bg-default">
-      <div class="container-fluid container-inset-0 isotope-wrap">
-        <div class="row row-10 gutters-10 isotope" data-isotope-layout="masonry" data-isotope-group="gallery" data-lightgallery="group">
-          <div class="col-xs-6 col-sm-4 col-xl-2 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-2 wow slideInLeft"><a class="thumbnail-mary-figure" href="images/gallery-1-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-1-310x585.jpg" alt="" width="310" height="585" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">Best Ingredients</a></h6>
-                  <div class="thumbnail-mary-location">Tasty Pizza</div>
-                </div>
-              </div>
-            </article>
+          <div class="section-title">
+              <h2>Restaurantes <span>Em Destaque</span></h2>
           </div>
-          <div class="col-xs-6 col-sm-8 col-xl-4 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-big wow slideInRight"><a class="thumbnail-mary-figure" href="images/gallery-2-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-2-631x587.jpg" alt="" width="631" height="587" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">Comfortable interior</a></h6>
-                  <div class="thumbnail-mary-location">Modern Design</div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-xl-2 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-2 wow slideInDown"><a class="thumbnail-mary-figure" href="images/gallery-3-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-3-311x289.jpg" alt="" width="311" height="289" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">quality Dishware</a></h6>
-                  <div class="thumbnail-mary-location">Top-notch utensils</div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="col-xs-6 col-sm-8 col-xl-4 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary wow slideInUp"><a class="thumbnail-mary-figure" href="images/gallery-4-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-4-631x289.jpg" alt="" width="631" height="289" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">Refreshing cocktails</a></h6>
-                  <div class="thumbnail-mary-location">Exclusive selection</div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-xl-2 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-2 wow slideInUp"><a class="thumbnail-mary-figure" href="images/gallery-5-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-5-311x289.jpg" alt="" width="311" height="289" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">Exotic Salads</a></h6>
-                  <div class="thumbnail-mary-location">Summer Taste</div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-xl-2 isotope-item oh-desktop">
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-2 wow slideInRight"><a class="thumbnail-mary-figure" href="images/gallery-6-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-6-311x289.jpg" alt="" width="311" height="289" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">All Types of pizza</a></h6>
-                  <div class="thumbnail-mary-location">Special Recipes</div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-xl-2 isotope-item oh-desktop">
 
-          
-            <!-- Thumbnail Mary-->
-            <article class="thumbnail thumbnail-mary thumbnail-mary-2 wow slideInLeft"><a class="thumbnail-mary-figure" href="images/gallery-7-1200x800-original.jpg" data-lightgallery="item"><img src="images/gallery-7-311x289.jpg" alt="" width="311" height="289" /></a>
-              <div class="thumbnail-mary-caption">
-                <div>
-                  <h6 class="thumbnail-mary-title"><a href="#">Diverse menu</a></h6>
-                  <div class="thumbnail-mary-location">Pick Your Favorite dish</div>
-                </div>
+          <div class="events-slider swiper">
+              <div class="swiper-wrapper">
+
+                  <div class="swiper-slide">
+                      <div class="row event-item">
+                          <div class="col-lg-6">
+                              <img src="/img/event-birthday.jpg" class="img-fluid" alt="">
+                          </div>
+                          <div class="col-lg-6 pt-4 pt-lg-0 content">
+                              <h3>Birthday Parties</h3>
+                              <div class="price">
+                                  <p><span>$189</span></p>
+                              </div>
+                              <p class="fst-italic">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                  incididunt ut labore et dolore
+                                  magna aliqua.
+                              </p>
+                              <ul>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                                  <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in
+                                      voluptate velit.</li>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                              </ul>
+                              <p>
+                                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                  in
+                                  reprehenderit in voluptate
+                                  velit esse cillum dolore eu fugiat nulla pariatur
+                              </p>
+                              <a href="./restaurante/restaurante.php"><button type="submit"
+                                      class="button-coment">Visitar restaurante</button></a>
+                          </div>
+                      </div>
+                  </div><!-- End testimonial item -->
+
+                  <div class="swiper-slide">
+                      <div class="row event-item">
+                          <div class="col-lg-6">
+                              <img src="/img/event-private.jpg" class="img-fluid" alt="">
+                          </div>
+                          <div class="col-lg-6 pt-4 pt-lg-0 content">
+                              <h3>Private Parties</h3>
+                              <div class="price">
+                                  <p><span>$290</span></p>
+                              </div>
+                              <p class="fst-italic">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                  incididunt ut labore et dolore
+                                  magna aliqua.
+                              </p>
+                              <ul>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                                  <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in
+                                      voluptate velit.</li>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                              </ul>
+                              <p>
+                                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                  in
+                                  reprehenderit in voluptate
+                                  velit esse cillum dolore eu fugiat nulla pariatur
+                              </p>
+                              <a href="./restaurante/restaurante.php"><button type="submit"
+                                      class="button-coment">Visitar restaurante</button></a>
+                          </div>
+                      </div>
+                  </div><!-- End testimonial item -->
+                  <div class="swiper-slide">
+                      <div class="row event-item">
+                          <div class="col-lg-6">
+                              <img src="/img/event-custom.jpg" class="img-fluid" alt="">
+                          </div>
+                          <div class="col-lg-6 pt-4 pt-lg-0 content">
+                              <h3>Custom Parties</h3>
+                              <div class="price">
+                                  <p><span>$99</span></p>
+                              </div>
+                              <p class="fst-italic">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                  incididunt ut labore et dolore
+                                  magna aliqua.
+                              </p>
+                              <ul>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                                  <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in
+                                      voluptate velit.</li>
+                                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea
+                                      commodo
+                                      consequat.</li>
+                              </ul>
+                              <p>
+                                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                  in
+                                  reprehenderit in voluptate
+                                  velit esse cillum dolore eu fugiat nulla pariatur
+                              </p>
+                              <a href="./restaurante/restaurante.php"><button type="submit"
+                                      class="button-coment">Visitar restaurante</button></a>
+                          </div>
+                      </div>
+                  </div><!-- End testimonial item -->
               </div>
-            </article>
+              <div class="swiper-pagination"></div>
           </div>
-        </div>
       </div>
-    </section>
+  </section><!-- End restaurante premiu Section -->
+
+</main><!-- End #main -->
 @endsection
 
   
