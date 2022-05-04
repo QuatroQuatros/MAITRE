@@ -1300,13 +1300,13 @@ input[type=search] {
 }
 
 .chefs .member .pic {
-  width: 300px ;
+  width: 356px ;
   height: 225px ;
   overflow: hidden;
 }
 
 .chefs .member .pic .restaurante-img{
-  width: 300px ;
+  width: 356px ;
   height: 225px ;
   object-fit: cover;
   overflow: hidden;
@@ -2033,4 +2033,8 @@ background: transparent;
 
 .error p{
 	font-size: 15px;
+}
+
+.logo-maitre{
+  object-fit: cover;
 }

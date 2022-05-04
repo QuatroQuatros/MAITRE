@@ -8,7 +8,11 @@ use App\Http\Controllers\Web\CategoriaController;
 
 
 
-Route::get('/', [ClienteController::class, 'index']);
+Route::get('/', [ClienteController::class, 'index'])->middleware('userAgent');
+
+Route::get('/app', function(){
+    return view('app');
+});
   
 
 

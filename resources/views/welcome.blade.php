@@ -89,6 +89,18 @@
           </div>
 
           <div class="row">
+          @if(count($restaurantes) == 0)
+            <div class="col-lg-4 col-md-6">
+              <div class="member">
+                  <div class="pic"><img class="restaurante-img" src="img/notFound.png" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                      <p>Não foi possivel encontrar nenhumr restaurante</p>
+
+
+                  </div>
+              </div>
+            </div>
+          @endif
           @foreach ($restaurantes as $r)
           <div class="col-lg-4 col-md-6">
             <div class="member">
