@@ -7,12 +7,12 @@ use App\Http\Controllers\Web\RestauranteController;
 use App\Http\Controllers\Web\CategoriaController;
 
 
-
 Route::get('/', [ClienteController::class, 'index'])->middleware('userAgent');
 
 Route::get('/app', function(){
     return view('app');
 });
+
   
 
 

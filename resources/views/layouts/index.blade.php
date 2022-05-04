@@ -37,7 +37,9 @@
       <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
           <div class="logo me-auto">
+
               <a href="/"><img class="logo-maitre" src="/img/logos/maitre.png" class="img-fluid"></a>
+
           </div>
           <nav id="navbar" class="navbar order-last order-lg-0">
               <ul>
@@ -47,10 +49,10 @@
                           <a href="./restaurante/pesquisaRest.php"><ion-icon name="search"></ion-icon></a>
                       </label>
                   </div>
+
                   <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
                   <li><a class="nav-link scrollto" href="#restaurantes">Restaurantes</a></li>
                   <li><a class="nav-link scrollto" href="/app">APP</a></li>
-                  <li><a class="nav-link scrollto" href="#restaurantePremium">Premium</a></li>
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -78,7 +80,9 @@
   <footer id="footer">
       <div class="container">
           <div class="logo me-auto">
+
               <a href="index.html"><img src="/img/logos/maitre.png" class="img-fluid"></a>
+
           </div>
           <div class="social-links">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
