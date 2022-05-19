@@ -37,20 +37,23 @@
       <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
           <div class="logo me-auto">
-              <a href="/"><img class="logo-maitre" src="/img/logos/maitre.png" class="img-fluid"></a>
+              <a href="/"><img src="/img/logo/maitre.png" class="img-fluid"></a>
           </div>
           <nav id="navbar" class="navbar order-last order-lg-0">
               <ul>
                   <div class="search">
                       <label>
-                          <input type="text" placeholder="pesquise aqui...">
-                          <a href="./restaurante/pesquisaRest.php"><ion-icon name="search"></ion-icon></a>
+                          <input type="text" placeholder="pesquise aqui..." id="search">
+                          <ion-icon name="search"></ion-icon>
                       </label>
+                      <div class="resultado" id="resultado">
+
+                    </div>
                   </div>
                   <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
-                  <li><a class="nav-link scrollto" href="#restaurantes">Restaurantes</a></li>
                   <li><a class="nav-link scrollto" href="/app">APP</a></li>
-                  <li><a class="nav-link scrollto" href="#restaurantePremium">Premium</a></li>
+                  <li><a class="nav-link scrollto" href="/restaurantes">Restaurantes</a></li>
+                  
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -60,12 +63,18 @@
           @endguest
 
           @auth
-            <a href="/clientes" class="book-a-table-btn scrollto"><i class="far fa-user"></i>  MEU PERFIL</a>
-            <form action="/logout" method="POST">
+          @if(auth()->user()->level == 2)
+          <a href="/restaurantes/admin" class="book-a-table-btn scrollto"><i class="far fa-user"></i>  DASHBOARD</a>
+          @elseif(auth()->user()->level == 3)
+          <a href="/admin" class="book-a-table-btn scrollto"><i class="far fa-user"></i>  DASHBOARD</a>
+          @else
+           <a href="/clientes" class="book-a-table-btn scrollto"><i class="far fa-user"></i>  MEU PERFIL</a>
+          @endif
+          <form action="/logout" method="POST">
               @csrf
               <a href="/logout" class="book-a-table-btn scrollto" onclick="event.preventDefault();
               this.closest('form').submit();"><i class="fas fa-sign-out"></i>  SAIR</a>
-            </form>
+            </form>  
           @endauth
          
       </div>
@@ -78,7 +87,7 @@
   <footer id="footer">
       <div class="container">
           <div class="logo me-auto">
-              <a href="index.html"><img src="/img/logos/maitre.png" class="img-fluid"></a>
+              <a href="index.html"><img src="/img/logo/maitre.png" class="img-fluid"></a>
           </div>
           <div class="social-links">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -110,8 +119,52 @@
   <script src="/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="/vendor/php-email-form/validate.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Template Main JS File -->
   <script src="/js/main.js"></script>
+
+  <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $("#search").keyup(function(){
+        var b = $("#search").val();
+        $("#resultado").css("display", "block");
+        $.ajax({
+            type:"GET",
+            data: {search:b},
+            url: "/buscar",
+            dataType: "json",
+            success: function(data, textStatus, xhr) {
+                if(xhr.status == 200){
+                    $("#resultado").empty();
+                    for(var i = 0; i < data.length; i++){
+                        $("#resultado").append( `<a class="busca" href='/restaurantes/${data[i].id}'>` + data[i].nome + "</a>");
+                    }
+                }else{
+                    $("#resultado").empty();
+                    $("#resultado").append( "<a class='busca'>" + 'Produto não encontrado' + "</a>");
+                }
+                
+            },
+            error: function(error){
+                console.log("Error:");
+                console.log(error);
+            }
+
+        });
+    });
+    
+    $("#resultado").mouseleave(function(){
+        $("#resultado").empty();
+        $("#search").val('');
+        $("#resultado").css("display", "none");
+    });
+
+</script>
 
 </body>
 
