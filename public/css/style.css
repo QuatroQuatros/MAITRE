@@ -1744,7 +1744,6 @@ input[type=search] {
   position: relative;
   width: 400px;
   margin: 0 10px;
-  margin-top: 18px;
 }
 
 .search label{
@@ -1763,14 +1762,42 @@ input[type=search] {
   font-size: 15px;
   outline: none;
   border:none;
-  background: transparent;
+  background: #424242;
 }
+
+
+
+.resultado{
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #424242;
+  border: 1px solid gray;
+  border-radius: 20px;
+  z-index: 999;
+}
+
+.resultado a{
+  text-decoration: none;
+  color: #ffb03b;
+}
+
+@media (max-width: 400px){
+  .search label input,
+  .resultado {
+    width: 80%;
+  }
+
+}
+
+
 .search label ion-icon {
 
   position: absolute;
   top: 8px;
   left: 10px;
   font-size: 1.2em;
+  color: #ffb03b;
 }
 
 .search label input:focus {
@@ -1906,12 +1933,12 @@ input[type=search] {
 .card__header {
   position: relative;
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   gap: 2em;
-  padding: 10px;
+  padding: 12px;
   border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: var(--surface-color);
-  transform: translateY(-100%);
+  transform: translateY(-65%);
   transition: .2s ease-in-out;
 }
 
@@ -1935,8 +1962,8 @@ input[type=search] {
 
 .card__thumb {
   flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -2033,8 +2060,14 @@ background: transparent;
 
 .error p{
 	font-size: 15px;
+
 }
 
 .logo-maitre{
   object-fit: cover;
+
+}
+
+.restaurante-card{
+  height: 225px;
 }

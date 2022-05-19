@@ -6,12 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Restaurante;
+use App\Repositories\RestauranteRepository;
 
 class RestauranteController extends Controller
 {
-    public function index(){
 
+    public function __construct(Restaurante $restaurante){
+        $this->restaurante = $restaurante;
+        $this->restauranteRepository = new RestauranteRepository($this->restaurante);
     }
+
+    public function index(){
+        return view('restaurantes.list', ['restaurantes' => Restaurante::all()]);
+    }
+
 
     public function dash(){
         
@@ -22,32 +30,31 @@ class RestauranteController extends Controller
         return view('dashboards.restaurante.create');
     }
 
+    public function show($id){
+        return view('restaurantes.show', ['restaurante' => $this->restauranteRepository->show($id)]);
+    }
 
     public function store(Request $request){
-        $request->validate([
-            "nome" => 'required|string',
-            "endereco" => 'required|string',
-            "numero" => 'required|integer',
-            "bairro" => 'required|string',
-            "cidade" => 'required|string',
-            "estado" => 'required|string',
-            "cep" => 'required|string',
-            "categoria_id" => 'required|integer',
-            "user_id" => 'required|integer'
-        ]);
+        $this->restauranteRepository->store($request);
+    }
 
-        $restaurante = Restaurante::create([
-            "nome" => $request->nome,
-            "foto" => $request->foto,
-            "cardapio" => $request->cardapio,
-            "endereco" => $request->endereco,
-            "numero" => $request->numero,
-            "bairro" => $request->bairro,
-            "cidade" => $request->cidade,
-            "estado" =>  $request->estado,
-            "cep" =>  $request->cep,
-            "categoria_id" => $request->categoria_id,
-            "user_id" => $request->user_id
-        ]);
+    public function buscar(){
+
+        $busca = request('search');
+        
+        if($busca){
+            if( $this->restaurante->where('nome', 'like', '%'.$busca.'%')->exists()){
+                $restaurante = $this->restaurante->where('nome', 'like', '%'.$busca.'%')->get();
+                return response()->json($restaurante, 200);
+
+            }else{
+                return response()->noContent();
+                
+            }
+            
+        }else{
+            return response()->json(['mensagem' => "produto não encontrado"], 204);
+        }
+        
     }
 }
